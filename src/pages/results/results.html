@@ -1,0 +1,45 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Astronaut Academy</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid *ngIf = "results">
+    <ion-row>
+      <ion-col width-50 offset-25>
+        <h2 class="feedback">
+          Your Results
+        </h2>
+        <h1>
+            You got {{correctTotal}} out of {{quizTotal}}!
+        </h1>
+        <p *ngIf="correctTotal === quizTotal">
+          Youre doing stellar, Cadet!
+        </p>
+        <p *ngIf="correctTotal/quizTotal >= .75">
+          You almost got a perfect score, Cadet! Keep it up!
+        </p>
+        <p *ngIf="correctTotal/quizTotal < .75">
+          You have got this, Cadet! Maybe try playing again?
+        </p>
+        <ion-list>
+          <ion-item *ngFor="let result of results">
+            Correct Answer: {{result.correctAnswer}}
+
+            Your Answer: {{result.yourAnswer}}
+          </ion-item>
+        </ion-list>
+        <div class="center">
+          <button ion-button (click)="backHome()">Back to Home</button>
+        </div>
+        <div class="center">
+          <button ion-button (click)="restart()">NEXT MISSION</button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
